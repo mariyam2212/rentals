@@ -1,4 +1,4 @@
 # rentals
 
 ## ER Diagram
-![ER](https://raw.githubusercontent.com/mariyam2212/rentals/master/final.drawio.svg?raw=true "Real Estate Management")
+![ER](https://github.com/mariyam2212/rentals/blob/master/version1.drawio.svg?raw=true "Real Estate Management")
