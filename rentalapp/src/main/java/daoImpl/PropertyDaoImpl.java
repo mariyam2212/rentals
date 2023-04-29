@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
+import dao.CommonDao;
+import model.BaseModel;
 import model.Property;
 import dao.PropertyDao;
 
@@ -20,7 +22,7 @@ import postgres.SQLDriver;
  * @author fatimamariyam
  *
  */
-public class PropertyDaoImpl implements PropertyDao {
+public class PropertyDaoImpl implements PropertyDao, CommonDao {
 	private final Connection conn;
 	SQLDriver sql = new SQLDriver();
 
@@ -28,6 +30,34 @@ public class PropertyDaoImpl implements PropertyDao {
 		conn = sql.getDriver();
 	}
 
+	@Override
+	public int add(BaseModel prop) throws SQLException {
+		//BaseModel prop = new Property();
+
+		return 0;
+	}
+
+	@Override
+	public void delete(int id) throws SQLException {
+
+	}
+
+	@Override
+	public void update(Property prop) throws SQLException {
+
+	}
+
+	@Override
+	public Property getByName(String name) throws SQLException {
+		return null;
+	}
+
+	@Override
+	public List<Property> getByFilter(String filter) throws SQLException {
+		return null;
+	}
+
+	// fetches properties from db by city name
 	@Override
 	public List<Property> getPropertiesByCity(String city) throws SQLException {
 		String query = "select * from property_info where city = ?";
@@ -56,5 +86,4 @@ public class PropertyDaoImpl implements PropertyDao {
 		}
 		return ls;
 	}
-
 }
