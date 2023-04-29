@@ -11,7 +11,7 @@ public interface CommonDao {
 
     public void delete(int id) throws SQLException;
 
-    public void update(Property prop) throws SQLException;
+    public void update(BaseModel prop) throws SQLException;
 
     public Property getByName(String name) throws SQLException;
 
