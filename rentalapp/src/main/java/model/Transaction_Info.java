@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Transaction_Info {
+public class Transaction_Info implements BaseModel {
     private int transaction_id;
     private float txn_amount;
     private String card_number;

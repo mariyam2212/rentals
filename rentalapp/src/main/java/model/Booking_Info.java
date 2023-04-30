@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Booking_Info {
+public class Booking_Info implements BaseModel {
     private int booking_id;
     private int renter_id;
     private Date start_date;

@@ -1,6 +1,6 @@
 package model;
 
-public class Unit_Features {
+public class Unit_Features implements BaseModel {
     private int unit_id;
     private Boolean has_heating;
     private Boolean has_hardwood_floor;

@@ -1,6 +1,6 @@
 package model;
 
-public class Payment_Type_Info {
+public class Payment_Type_Info implements BaseModel {
     private int payment_id;
     private String payment_type;
 

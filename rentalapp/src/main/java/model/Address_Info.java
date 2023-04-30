@@ -1,6 +1,6 @@
 package model;
 
-public class Address_Info {
+public class Address_Info implements BaseModel {
     private int address_id;
     private String street;
     private String city;

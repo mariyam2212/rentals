@@ -1,8 +1,6 @@
 package model;
 
-import java.math.BigDecimal;
-
-public class Property_Neighbourhood {
+public class Property_Neighbourhood implements BaseModel {
 private int property_id;
 private Float nearest_grocery;
 private Float nearest_school;
@@ -19,7 +17,7 @@ private Float nearest_airport;
         this.property_id = property_id;
     }
 
-    public Float getNearest_grocery() {
+    public float getNearest_grocery() {
         return nearest_grocery;
     }
 
@@ -27,7 +25,7 @@ private Float nearest_airport;
         this.nearest_grocery = nearest_grocery;
     }
 
-    public Float getNearest_school() {
+    public float getNearest_school() {
         return nearest_school;
     }
 
