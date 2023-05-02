@@ -13,6 +13,7 @@
   <servlet-mapping>
     <servlet-name>ControllerServlet</servlet-name>
     <url-pattern>/getProperties</url-pattern>
+    <url-pattern>/login</url-pattern>
     <url-pattern>/back</url-pattern>
   </servlet-mapping>
 </web-app>

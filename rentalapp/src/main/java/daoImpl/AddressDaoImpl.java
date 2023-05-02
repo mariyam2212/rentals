@@ -10,8 +10,7 @@ import java.sql.*;
 import java.util.List;
 
 public class AddressDaoImpl implements CommonDao {
-
-    static Connection conn = SQLDriver.getConnection();
+    Connection conn = SQLDriver.getInstance().getConnection();
 
     @Override
     public int add(BaseModel prop) throws SQLException {

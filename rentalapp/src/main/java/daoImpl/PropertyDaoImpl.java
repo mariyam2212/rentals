@@ -23,7 +23,7 @@ import postgres.SQLDriver;
  *
  */
 public class PropertyDaoImpl implements PropertyDao, CommonDao {
-    static Connection conn = SQLDriver.getConnection();
+    Connection conn = SQLDriver.getInstance().getConnection();
 
     public PropertyDaoImpl() {
     }

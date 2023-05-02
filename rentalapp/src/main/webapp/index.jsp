@@ -1,15 +1,21 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
 <html>
-<body>
+<head>
+	<meta charset="UTF-8">
+	<title>Login Page</title>
+</head>
 <center>
-	<h2>Retrieve Properties!</h2>
-	<form action="getProperties" method="post">
-		Enter city: <input type="text" name="city" size="20"> <input
-			type="submit" value="Get Properties" />
+<body>
+	<h1>Login Page</h1>
+	<form action="login" method="post">
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" required><br><br>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required><br><br>
+		<input type="submit" value="Login">
 	</form>
-</center>
 </body>
+</center>
 </html>
+
 
