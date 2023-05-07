@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Transaction_Info {
+public class Transaction_Info extends BaseModel {
     private int transaction_id;
     private float txn_amount;
     private String card_number;
@@ -10,7 +10,21 @@ public class Transaction_Info {
     private int payment_type_id;
     private Date txn_date;
     private String txn_status;
-    private Date expiry_date;
+    private String expiry_date;
+
+    private int cvv;
+
+    public void setExpiry_date(String expiry_date) {
+        this.expiry_date = expiry_date;
+    }
+
+    public int getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(int cvv) {
+        this.cvv = cvv;
+    }
 
     public int getTransaction_id() {
         return transaction_id;
@@ -64,15 +78,11 @@ public class Transaction_Info {
         return txn_status;
     }
 
-    public void setTxn_status(String txn_status) {
-        this.txn_status = txn_status;
-    }
-
-    public Date getExpiry_date() {
+    public String getExpiry_date() {
         return expiry_date;
     }
 
-    public void setExpiry_date(Date expiry_date) {
-        this.expiry_date = expiry_date;
+    public void setTxn_status(String txn_status) {
+        this.txn_status = txn_status;
     }
 }

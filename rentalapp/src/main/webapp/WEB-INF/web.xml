@@ -13,6 +13,15 @@
   <servlet-mapping>
     <servlet-name>ControllerServlet</servlet-name>
     <url-pattern>/getProperties</url-pattern>
+    <url-pattern>/login</url-pattern>
     <url-pattern>/back</url-pattern>
+    <url-pattern>/register</url-pattern>
+    <url-pattern>/filterUnits</url-pattern>
+    <url-pattern>/bookingPage</url-pattern>
+    <url-pattern>/addBookingInfo</url-pattern>
+    <url-pattern>/gotoProfile</url-pattern>
+    <url-pattern>/logout</url-pattern>
+    <url-pattern>/addPropertyRedirect</url-pattern>
+    <url-pattern>/addProperty</url-pattern>
   </servlet-mapping>
 </web-app>

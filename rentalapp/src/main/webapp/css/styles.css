@@ -1,0 +1,150 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+h2 {
+    color: #4CAF50;
+    font-size: 30px;
+    font-family: Arial, sans-serif;
+}
+h3 {
+    font-size: 30px;
+    font-family: Arial, sans-serif;
+}
+
+header {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+}
+
+h4 {
+    color: #4CAF50;
+    font-size: 20px;
+    size: 66px;
+    margin: 10px;
+    border: 1px solid;
+}
+
+label {
+    padding: 10px;
+}
+
+main {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px;
+}
+
+.card {
+	background-color: #f4f4f4;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	margin: 20px;
+	padding: 20px;
+	width: 300px;
+}
+
+.card img {
+	display: block;
+	height: 200px;
+	margin: 0 auto 20px auto;
+	width: 300px;
+}
+
+.card h2 {
+	font-size: 24px;
+	margin: 0 0 10px 0;
+}
+
+.card p {
+	font-size: 16px;
+	margin: 0 0 10px 0;
+}
+
+.card a {
+	background-color: #4CAF50;
+	border-radius: 5px;
+	color: #fff;
+	display: inline-block;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+	width: 100px;
+}
+
+.card a:hover {
+	background-color: #0067a0;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+	border-radius: 5px;
+	color: #fff;
+	display: inline-block;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+	width: 130px;
+}
+
+button {
+    background-color: #4CAF50;
+	border-radius: 5px;
+	color: #fff;
+	display: inline-block;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+	width: 130px;
+	margin: 10px;
+}
+
+.filterForm {
+    display: flex;
+    padding: 10px;
+}
+
+/* The modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+

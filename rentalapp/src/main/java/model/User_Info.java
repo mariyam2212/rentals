@@ -1,6 +1,7 @@
 package model;
 
-public class user_info {
+public class User_Info extends BaseModel {
+
     private int user_id;
     private String email;
     private int user_type_id;
@@ -10,6 +11,8 @@ public class user_info {
     private String contact_no;
     private String job_type;
     private String agency_name;
+
+    private String password;
 
     public int getUser_id() {
         return user_id;
@@ -82,4 +85,13 @@ public class user_info {
     public void setAgency_name(String agency_name) {
         this.agency_name = agency_name;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
+

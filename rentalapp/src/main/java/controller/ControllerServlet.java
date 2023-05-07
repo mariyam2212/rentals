@@ -11,17 +11,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import commons.RequestStrategy;
 import daoImpl.PropertyDaoImpl;
 import model.Property;
-import postgres.SQLDriver;
+import service.*;
 
 /**
  * Servlet implementation class GetProperties
  */
 public class ControllerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    SQLDriver sql = new SQLDriver();
-    PropertyDaoImpl pdi = new PropertyDaoImpl();
+    RequestContext requestContext;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,15 +45,41 @@ public class ControllerServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
      * response)
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String action = request.getServletPath();
         switch (action) {
+            case "/login":
+                doAction(new Login(), request, response);
+                break;
+            case "/register":
+                doAction(new Register(), request, response);
+                break;
             case "/back":
-                goBack(request, response);
+                doAction(new Back(), request, response);
                 break;
             case "/getProperties":
-                getPropertiesByCity(request, response);
+                doAction(new Properties(), request, response);
+                break;
+            case "/filterUnits":
+                doAction(new Filter(), request, response);
+                break;
+            case "/bookingPage":
+                doAction(new Booking(), request, response);
+                break;
+            case "/addBookingInfo":
+                doAction(new Booking(), request, response);
+                break;
+            case "/gotoProfile":
+                doAction(new Booking(), request, response);
+                break;
+            case "/logout":
+                doAction(new Logout(), request, response);
+                break;
+            case "/addPropertyRedirect":
+                doAction(new AgentActions(), request, response);
+                break;
+            case "/addProperty":
+                doAction(new AgentActions(), request, response);
                 break;
             default:
                 break;
@@ -61,22 +87,8 @@ public class ControllerServlet extends HttpServlet {
 
     }
 
-    private void getPropertiesByCity(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        String city = request.getParameter("city");
-        try {
-            List<Property> lp = pdi.getPropertiesByCity(city);
-            request.setAttribute("properties", lp);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("propertyList.jsp");
-            dispatcher.forward(request, response);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void goBack(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+    private void doAction(RequestStrategy requestStrategy, HttpServletRequest request, HttpServletResponse response) {
+        requestContext = new RequestContext(requestStrategy, request, response);
+        requestContext.execute();
     }
 }
