@@ -11,8 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class PropertyNeighbourhoodDaolmpl implements CommonDao {
-    static Connection conn = SQLDriver.getConnection();
+public class PropertyNeighbourhoodDaolmpl extends CommonDao {
+    Connection conn = SQLDriver.getInstance().getConnection();
 
     @Override
     public int add(BaseModel prop) throws SQLException {
@@ -67,12 +67,7 @@ public class PropertyNeighbourhoodDaolmpl implements CommonDao {
     }
 
     @Override
-    public Property getByName(String name) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public List<Property> getByFilter(String filter) throws SQLException {
+    public BaseModel getByName(String name) throws SQLException {
         return null;
     }
 }

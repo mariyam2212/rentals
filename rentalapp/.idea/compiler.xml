@@ -9,5 +9,9 @@
         <module name="rental_app" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="rental_app" target="1.8" />
+      <module name="rentalapp" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

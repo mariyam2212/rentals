@@ -1,11 +1,22 @@
 package model;
 
-public class Address_Info implements BaseModel {
+public class Address_Info extends BaseModel {
     private int address_id;
     private String street;
     private String city;
     private String country;
     private String zip_code;
+
+    private String state;
+
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public int getAddress_id() {
         return address_id;

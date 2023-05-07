@@ -6,33 +6,40 @@ import model.BaseModel;
 import model.Property;
 import postgres.SQLDriver;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class AddressDaoImpl implements CommonDao {
+public class AddressDaoImpl extends CommonDao {
     Connection conn = SQLDriver.getInstance().getConnection();
 
     @Override
     public int add(BaseModel prop) throws SQLException {
         Address_Info ai = (Address_Info) prop;
-        String query = "INSERT INTO address_info (address_id, street, city, country, zip_code) "
-                + "VALUES (?, ?, ?, ?, ?); ";
-
+        String query = "INSERT INTO address_info (street, city, state, zip_code) "
+                + "VALUES (?, ?, ?, ?) RETURNING address_id; ";
+        int address_id = 0;
         try {
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, ai.getAddress_id());
-            ps.setString(2, ai.getStreet());
-            ps.setString(3, ai.getCity());
-            ps.setString(4, ai.getCountry());
-            ps.setString(5, ai.getZip_code());
-            int n = ps.executeUpdate();
-            conn.commit();
-            System.out.println("Address record created successfully");
-            return n;
+            ps.setString(1, ai.getStreet());
+            ps.setString(2, ai.getCity());
+            ps.setString(3, ai.getState());
+            ps.setString(4, ai.getZip_code());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                address_id = rs.getInt("address_id");
+            }
+            if (address_id != 0) {
+                System.out.println("Address record created successfully");
+                return address_id;
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return 0;
         }
+        return 0;
     }
 
     @Override
@@ -59,12 +66,30 @@ public class AddressDaoImpl implements CommonDao {
     }
 
     @Override
-    public Property getByName(String name) throws SQLException {
+    public BaseModel getByName(String name) throws SQLException {
         return null;
     }
 
     @Override
-    public List<Property> getByFilter(String filter) throws SQLException {
-        return null;
+    public boolean hasProp(String filter) throws SQLException {
+        return false;
+    }
+
+
+    public Address_Info getAddressInfoByUserId(Integer userId) throws SQLException {
+        String query = "\n" +
+                "Select street, city, state, zip_code from address_info join user_info on address_info.address_id = user_info.address_id where user_info.user_id = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setInt(1, userId);
+        ResultSet rs = ps.executeQuery();
+        Address_Info addressInfo = new Address_Info();
+
+        while (rs.next()) {
+            addressInfo.setStreet(rs.getString("street"));
+            addressInfo.setCity(rs.getString("city"));
+            addressInfo.setState(rs.getString("state"));
+            addressInfo.setZip_code(rs.getString("zip_code"));
+        }
+        return addressInfo;
     }
 }

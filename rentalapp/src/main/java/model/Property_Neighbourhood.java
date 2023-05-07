@@ -1,6 +1,6 @@
 package model;
 
-public class Property_Neighbourhood implements BaseModel {
+public class Property_Neighbourhood extends BaseModel {
 private int property_id;
 private Float nearest_grocery;
 private Float nearest_school;

@@ -11,8 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class PaymentTypeDaolmpl implements CommonDao {
-    static Connection conn = SQLDriver.getConnection();
+public class PaymentTypeDaolmpl extends CommonDao {
+    Connection conn = SQLDriver.getInstance().getConnection();
 
     //TODO: to be removed
     @Override
@@ -56,12 +56,12 @@ public class PaymentTypeDaolmpl implements CommonDao {
     }
 
     @Override
-    public Property getByName(String name) throws SQLException {
+    public BaseModel getByName(String name) throws SQLException {
         return null;
     }
 
     @Override
-    public List<Property> getByFilter(String filter) throws SQLException {
-        return null;
+    public boolean hasProp(String filter) throws SQLException {
+        return false;
     }
 }

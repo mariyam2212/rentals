@@ -1,12 +1,10 @@
 package model;
 
-import java.util.Date;
-
-public class Booking_Info implements BaseModel {
+public class Booking_Info extends BaseModel {
     private int booking_id;
     private int renter_id;
-    private Date start_date;
-    private Date end_date;
+    private String start_date;
+    private String end_date;
     private int booking_unit_id;
     private String booking_status;
     private int transaction_id;
@@ -27,19 +25,19 @@ public class Booking_Info implements BaseModel {
         this.renter_id = renter_id;
     }
 
-    public Date getStart_date() {
+    public String getStart_date() {
         return start_date;
     }
 
-    public void setStart_date(Date start_date) {
+    public void setStart_date(String start_date) {
         this.start_date = start_date;
     }
 
-    public Date getEnd_date() {
+    public String getEnd_date() {
         return end_date;
     }
 
-    public void setEnd_date(Date end_date) {
+    public void setEnd_date(String end_date) {
         this.end_date = end_date;
     }
 

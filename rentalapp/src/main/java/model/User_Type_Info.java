@@ -1,6 +1,6 @@
 package model;
 
-public class User_Type_Info implements BaseModel {
+public class User_Type_Info extends BaseModel {
     private int user_type_id;
     private String user_type;
 

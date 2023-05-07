@@ -1,7 +1,7 @@
 package model;
 
 
-public class Property implements BaseModel{
+public class Property extends BaseModel{
     private int property_id;
     private String property_name;
     private int total_units;

@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Unit_Info implements BaseModel {
+public class Unit_Info extends BaseModel {
     private int unit_id;
     private String unit_title;
     private String unit_type;

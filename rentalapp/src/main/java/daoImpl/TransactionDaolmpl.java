@@ -2,43 +2,45 @@ package daoImpl;
 
 import dao.CommonDao;
 import model.BaseModel;
-import model.Property;
 import model.Transaction_Info;
 import postgres.SQLDriver;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.List;
+import java.sql.*;
+import java.time.LocalDate;
 
-public class TransactionDaolmpl implements CommonDao {
-    static Connection conn = SQLDriver.getConnection();
+public class TransactionDaolmpl extends CommonDao {
+    Connection conn = SQLDriver.getInstance().getConnection();
 
     @Override
     public int add(BaseModel prop) throws SQLException {
-         Transaction_Info ai = (Transaction_Info) prop;
-        String query = "INSERT INTO transaction_info (transaction_id, txn_amount, card_number, address_id, payment_type_id, txn_date, txn_status, expiry_date) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?); ";
-
+        Transaction_Info ai = (Transaction_Info) prop;
+        String query = "INSERT INTO transaction_info (cvv, txn_amount, card_number, address_id, payment_type_id, txn_date, txn_status, expiry_date) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING transaction_id; ";
+        int transaction_id = 0;
         try {
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, ai.getTransaction_id());
+            ps.setInt(1, ai.getCvv());
             ps.setFloat(2, ai.getTxn_amount());
             ps.setString(3, ai.getCard_number());
             ps.setInt(4, ai.getAddress_id());
             ps.setInt(5, ai.getPayment_type_id());
-            ps.setDate(6, (Date) ai.getTxn_date());
+            LocalDate now = LocalDate.now();
+            ps.setDate(6, Date.valueOf(now));
             ps.setString(7, ai.getTxn_status());
-            ps.setDate(8, (Date) ai.getExpiry_date());
-            int n = ps.executeUpdate();
-            conn.commit();
-            System.out.println("Address record created successfully");
-            return n;
+            ps.setString(8, ai.getExpiry_date());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                transaction_id = rs.getInt("transaction_id");
+            }
+            if (transaction_id != 0) {
+                System.out.println("Address record created successfully");
+                return transaction_id;
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return 0;
         }
+        return 0;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class TransactionDaolmpl implements CommonDao {
         ps.setInt(4, ai.getPayment_type_id());
         ps.setDate(5, (Date) ai.getTxn_date());
         ps.setString(6, ai.getTxn_status());
-        ps.setDate(7, (Date) ai.getExpiry_date());
+        ps.setDate(7, Date.valueOf(ai.getExpiry_date()));
         ps.setInt(8, ai.getTransaction_id());
 
         int n = ps.executeUpdate();
@@ -70,12 +72,7 @@ public class TransactionDaolmpl implements CommonDao {
     }
 
     @Override
-    public Property getByName(String name) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public List<Property> getByFilter(String filter) throws SQLException {
+    public BaseModel getByName(String name) throws SQLException {
         return null;
     }
 }

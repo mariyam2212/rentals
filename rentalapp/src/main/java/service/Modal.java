@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class Back implements RequestStrategy {
+public class Modal implements RequestStrategy {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("getProperties.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("modal.jsp");
         try {
-            dispatcher.forward(request, response);
+            rd.forward(request, response);
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
