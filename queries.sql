@@ -229,5 +229,9 @@ VALUES
 
 
 
-    
-    
+ALTER TABLE user_info
+ADD COLUMN password varchar(255);
+ALTER TABLE transaction_info ADD column cvv numeric(3);
+ALTER TABLE address_info DROP COLUMN country;
+ALTER TABLE address_info ADD COLUMN state varchar(10)
+ALTER TABLE transaction_info ALTER column expiry_date TYPE varchar(25)
